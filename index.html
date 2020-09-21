@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character List</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/5dd2a1de7b.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-light sticky-top">
+    <a class="navbar-brand" href="index.html"><i class="fas fa-home fa-2x"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Character List<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link" href="friendList.html">Favorite List</a>
+          <h4><span class="badge badge-light" id="favorite-count-badge"></span></h4>
+        </li>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 title text-center">
+          <h1>Virtual Characters</h1>
+        </div>
+        <div class="col-12 break-line">
+          <hr>
+        </div>
+        <div class="col-12 serch-field-container">
+          <h5 class="text-center">Who are you searching for...</h5>
+          <div class="search-field-input-wrapper d-flex align-items-center justify-content-center">
+            <input id="search-field" class="form-control mr-2" type="text" placeholder="Search Name...">
+            <button type="button" class="btn btn-primary mr-3" id="clear-search-btn">Clear Search</button>
+          </div>
+        </div>
+        <div class="col-12 filters d-flex justify-content-center align-items-center flex-wrap my-2">
+          <div class="gender-filter mr-3 my-1">
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle" type="button" id="gender-filter-btn" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Gender
+              </button>
+              <div class="dropdown-menu" aria-labelledby="gender-dropdown-btn">
+                <a class="dropdown-item" href="#" data-gender="all">All Genders</a>
+                <a class="dropdown-item" href="#" data-gender="male">Male</a>
+                <a class="dropdown-item" href="#" data-gender="female">Female</a>
+              </div>
+            </div>
+          </div>
+          <div class="region-filter mr-3 my-1">
+            <div class="dropdown">
+              <button class="btn btn-success dropdown-toggle" type="button" id="region-filter-btn"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Region
+              </button>
+              <div class="dropdown-menu region-dropdown" aria-labelledby="region-dropdown-btn">
+                <!-- insert dropdown options here -->
+              </div>
+            </div>
+          </div>
+          <div class="age-filter mr-3 my-1">
+            <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#age-range-silders"
+              aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-filter mr-1"></i>Age
+            </button>
+          </div>
+          <div class="clear-filters-btn-wrapper my-1">
+            <button id="clear-filters-btn" type="button" class="btn btn-primary">Clear Filters</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 collapse mx-3 mt-3" id="age-range-silders">
+        <div class="d-flex align-items-center my-2 slider-wrapper mx-auto">
+          <span class="badge badge-pill badge-warning" id="max-label">Age Max</span>
+          <input type="range" class="form-control-range" id="age-max" step="1" min="22" max="75">
+          <span class="badge badge-pill badge-warning" id="show-age-max"><span>
+        </div>
+        <div class="d-flex align-items-center my-2 slider-wrapper mx-auto">
+          <span class="badge badge-pill badge-warning" id="min-label">Age Min</span>
+          <input type="range" class="form-control-range" id="age-min" step="1" min="22" max="75">
+          <span class="badge badge-pill badge-warning" id="show-age-min"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Data Panel -->
+  <div class="container mt-3">
+    <div class="row mb-2">
+      <h5 class="col d-flex align-items-center" id="show-page">
+        <span class="badge badge-warning" id="show-page-badge"></span>
+      </h5>
+      <div class="col text-right" id="mode-togglers">
+        <i class="fa fa-th fa-lg px-1" aria-hidden="true"></i>
+        <i class="fa fa-bars fa-lg px-1" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 text-center" id="user-data-panel">
+      <!-- insert user list here -->
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div class="container">
+    <div class="modal fade" id="user-data-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="user-modal-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body d-flex justify-content-around align-items-center pr-0" id="user-modal-card-body">
+            <div class="modal-body-left mr-3">
+              <div id="user-modal-avatar"></div>
+            </div>
+            <div class="modal-body-right">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">Name</th>
+                    <td id="user-modal-fullName"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Age</th>
+                    <td id="user-modal-age"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Gender</th>
+                    <td id="user-modal-gender"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Birthday</th>
+                    <td id="user-modal-birthday"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Region</th>
+                    <td id="user-modal-region"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Email</th>
+                    <td id="user-modal-email"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pagination -->
+  <nav aria-label="Page navigation example" class="mt-3">
+    <ul class="pagination justify-content-center" id="paginator">
+      <!-- insert pagination here -->
+    </ul>
+  </nav>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
